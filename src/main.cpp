@@ -207,7 +207,7 @@ int main() {
         
         if(px <= 21 && currentFloor == 2 && enemyCount == 0){
             stopMusic();
-            Sleep(3000);
+            Sleep(1500);
             system("cls");
             winMenu();
             playBackgroundMusic();
