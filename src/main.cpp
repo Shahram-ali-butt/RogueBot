@@ -127,9 +127,9 @@ int main() {
 
     initConsole(boundaryLength, boundaryHeight);
     
+    MainMenu: //Goto Label
     playBackgroundMusic();
 
-    MainMenu: //Goto Label
     system("cls");
     
     string mainChoice = mainMenu();
@@ -146,8 +146,12 @@ int main() {
     while(true){
         bool escPressedNow = GetAsyncKeyState(VK_ESCAPE);
         if(escPressedNow && !escPressedLastFrame){
-            if(pauseMenu() == 1){
+            int pauseOption = pauseMenu();
+            if(pauseOption == 6){
                 goto GameEnd;
+            }else if(pauseOption == 5){
+                resumeMusic();
+                goto MainMenu;
             }
 
             // resume game
@@ -210,7 +214,6 @@ int main() {
             Sleep(1500);
             system("cls");
             winMenu();
-            playBackgroundMusic();
             goto MainMenu;
         }
         
@@ -960,7 +963,10 @@ int pauseMenu(){
     cout << "4. Difficulty";
     y++;
     gotoxy(x, y);
-    cout << "5. Exit";
+    cout << "5. Main Menu";
+    y++;
+    gotoxy(x, y);
+    cout << "6. Exit";
     y++;
     
     while(true){
@@ -994,7 +1000,10 @@ int pauseMenu(){
             goto PauseMenuStart;
         }
         else if(option == "5"){
-            return 1;
+            return 5;
+        }
+        else if(option == "6"){
+            return 6;
         }
         else{
             cout << "Invalid Input!";
