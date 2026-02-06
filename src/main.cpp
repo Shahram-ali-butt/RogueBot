@@ -480,7 +480,6 @@ void gameStory(){
     x = 85;
     gotoxy(x, y);
     cout << GREEN << "Press Enter to continue..." << RESET;
-    cin.ignore();
     cin.get();
 }
 
@@ -514,7 +513,9 @@ string mainMenu(){
     while(true){
         gotoxy(x, y);
         cout << "Option: ";
-        cin >> option;
+        if (!std::getline(cin, option)){
+            exit(0);
+        }
         
         y++;
         gotoxy(x, y);
@@ -834,7 +835,10 @@ string gameOver(){
         y++;
         gotoxy(x, y);
         cout << "Option (1/2): ";
-        cin >> option;
+        if(!getline(cin, option)){
+            exit(0);
+        }
+        
         if(option != "1" && option != "2"){
             y++;
             gotoxy(x, y);
@@ -900,8 +904,7 @@ void controls(){
     y += 4;
     x = 83;
     gotoxy(x, y);
-    cout << PURPLE << "Press Enter to continue...";  
-    cin.ignore();                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          
+    cout << PURPLE << "Press Enter to continue...";                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           
     cin.get();                                                                                                                                                                                         
 }
 
@@ -963,7 +966,10 @@ int pauseMenu(){
     while(true){
         gotoxy(x, y);
         cout << "Option: ";
-        cin >> option;
+
+        if(!getline(cin, option)){
+            exit(0);
+        }
         
         y++;
         gotoxy(x, y);
