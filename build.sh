@@ -20,4 +20,4 @@ fi
 
 cd ..
 
-./build/main.exe
+./build/RogueBot.exe
