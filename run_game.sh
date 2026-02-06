@@ -1,5 +1,7 @@
-cd build
-ninja
-cd ..
+#!/usr/bin/env bash
+set -e
 
-./build/main.exe
+cmake --build build
+cmake --build build --target RogueBot
+
+./build/RogueBot.exe
