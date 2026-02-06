@@ -31,6 +31,5 @@ void eraseEnemy(int &ex, int &ey);
 
 // Movement
 void moveEnemyLimitedH(int &ex, int &ey, int &direction, int startingX, int limit);
-void moveEnemyH(int &ex, int &ey, int &direction, int startingX);
 
 #endif

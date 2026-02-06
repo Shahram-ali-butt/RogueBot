@@ -12,6 +12,7 @@ void drawPlayerHealth(){
     drawHealthBar(pHBarX, pHBarY, health, maxPlayerHealth, "PLAYER");
 }
 
+
 void handleBulletPlayerCollision(int enemyBulletData[][bulletDataCols], int enemyBulletCount, int px, int py, int &health){
     for (int b = 0; b < enemyBulletCount; b++) {
         int bx = enemyBulletData[b][0];
@@ -103,7 +104,6 @@ void printAllPlayerBullets(int playerBulletData[][playerBulletDataCols], int &pl
 }
 
 
-
 void printPlayer(int &px, int &py, int health) {
     char player[][8] = {
         {"  \\_/  "},
@@ -125,20 +125,20 @@ void printPlayer(int &px, int &py, int health) {
     }
 }
 
+void erasePlayer(int &px, int &py){
+    for(int row = 0; row < 5; row++){
+        gotoxy(px, py + row);
+        cout << "        ";
+    }
+}
+
+
 void movePlayer(int &px, int &py, int health){
     if ((GetAsyncKeyState(VK_LEFT) && (getCharAtxy(px - 1, py) == ' ' && (getCharAtxy(px - 1, py + 3) == ' ')) || getCharAtxy(px - 1, py) == '|' || getCharAtxy(px - 1, py) == '-')) {
         movePlayerLeft(px, py, health);
     }
     if ((GetAsyncKeyState(VK_RIGHT) && (getCharAtxy(px + 8, py) == ' ' && (getCharAtxy(px + 8, py + 3) == ' '))) || getCharAtxy(px + 8, py) == '|' || getCharAtxy(px + 8, py) == '-') {
         movePlayerRight(px, py, health);
-    }
-}
-
-
-void erasePlayer(int &px, int &py){
-    for(int row = 0; row < 5; row++){
-        gotoxy(px, py + row);
-        cout << "        ";
     }
 }
 
@@ -153,7 +153,6 @@ void movePlayerRight(int &px, int &py, int health){
         px = px + 1;
         printPlayer(px, py, health);
 }
-
 
 
 bool aboveNextGround(int hWallData[][hWallDataCols], int hWallCount, int py, int &nextGroundY){
@@ -265,7 +264,6 @@ void detectGround(int px, int &py, int hWallData[][hWallDataCols], int hWallCoun
 }
 
 
-
 void jumpInput(){
     static bool jumpSoundPlayed = false;
 
@@ -307,4 +305,3 @@ void playerJump(int &px, int &py, int groundY){
 
     }
 }
-

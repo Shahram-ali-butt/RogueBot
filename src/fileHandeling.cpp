@@ -9,7 +9,6 @@ using namespace std;
 
 string base = getExeDir();
 
-
 string prevPlayerFile = base + "/data/prevPlayer.txt";
 string prevEnemiesFile = base + "/data/prevEnemies.txt";
 string defaultPlayerFile = base + "/data/defaultPlayer.txt";
@@ -66,7 +65,6 @@ void loadDefaultPlayerData(int &px, int &py, int &currentFloor, bool &onGround, 
 }
 
 
-
 void savePrevEnemiesData(int enemyData[][enemyDataCols], int enemyLimit, int enemyDataCols){
     ofstream ofile(prevEnemiesFile);
     if(!ofile){
@@ -115,7 +113,6 @@ void loadDefaultEnemiesData(int enemyData[][enemyDataCols], int enemyLimit, int 
 
     ifile.close();
 }
-
 
 
 void savePrevVWallData(int vWallData[][vWallDataCols], int vWallMax, int vWallDataCols){
@@ -168,7 +165,6 @@ void loadDefaultvWallData(int vWallData[][vWallDataCols], int vWallMax, int vWal
 }
 
 
-
 void savePrevEnemyBullet(int enemyBulletData[][bulletDataCols], int enemyBulletCount, int bulletDataCols){
     ofstream ofile(prevEnemiesBulletFile);
     if(!ofile){
@@ -203,7 +199,6 @@ void loadPrevEnemyBullet(int enemyBulletData[][bulletDataCols], int enemyBulletC
 }
 
 
-
 void savePrevPlayerBullet(int playerBulletData[][playerBulletDataCols], int playerBulletCount, int playerBulletDataCols){
     ofstream ofile(prevPlayerBulletFile);
     if(!ofile){
@@ -236,7 +231,6 @@ void loadPrevPlayerBullet(int playerBulletData[][playerBulletDataCols], int play
 
     ifile.close();
 }
-
 
 
 void resetEnemyBullets(int enemyBulletData[][bulletDataCols], int enemyBulletCount, int bulletDataCols){

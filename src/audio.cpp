@@ -58,7 +58,6 @@ void closeAudio(){
     SDL_QuitSubSystem(SDL_INIT_AUDIO);
 }
 
-/* ---------- SOUND EFFECTS ---------- */
 
 void playShootSound() {
     Mix_PlayChannel(-1, shootSound, 0);
@@ -84,7 +83,7 @@ void playGameOverSound() {
     Mix_PlayChannel(-1, gameOverSound, 0);
 }
 
-/* ---------- MUSIC ---------- */
+
 
 void playBackgroundMusic() {
     if (!Mix_PlayingMusic()) {

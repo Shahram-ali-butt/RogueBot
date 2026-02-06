@@ -38,34 +38,10 @@ int enemyBulletCount = 0;
 const string RED = "\033[31m";
 const string GREEN = "\033[32m";
 const string PURPLE = "\u001b[35m";
-const string BLACK = "\e[0;30m";
-const string YELLOW = "\e[0;33m";
 const string GRAY = "\033[30;1m";
 const string RESET = "\033[0m";
 
-
-//            0  1    2       3          4         5        6        7         8         
-// enemyData (x, y, killed, moving, direction, startingX, health, damage , activated, 
-//     9              10                  11          12            13           14            15       16         17 
-// fireRate, fireDirection(1L, -1R)), burstLimit, burstCount, fireCooldown, burstCooldown, burstDelay, floor, movementLimit
-// int enemyData[][enemyDataCols] = {
-// //0,   1,  2, 3,  4,    5,  6,   7, 8,   9,  10,  11,  12,  13   14  15  16   17
-// { 89,  43, 0, 0,  0,   89, 100, 10, 1,   1,  -1,   3,   0,   0,  0,  45,  -1, 0 }, // Ground floor
-// {171,  43, 0, 0,  0,  171, 100,  9, 1,   1,  -1,   3,   0,   0,  0,  40,  -1, 0 },
-// { 42,  31, 0, 1, -1,   42, 100,  7, 0,   1,   1,   4,   0,   0,  0,  35,  0, 115}, // First floor
-// {106,  31, 0, 0,  0,  106, 100,  6, 0,   1,   1,   4,   0,   0,  0,  32,  0,  0 },
-// { 61,  19, 0, 0,  0,   61, 100,  5, 0,   1,  -1,   3,   0,   0,  0,  24,  1, 0 }, // Second floor
-// {118,  19, 0, 1, -1,  118, 100,  4, 0,   1,  -1,   3,   0,   0,  0,  20,  1, 182},
-// { 50,   7, 0, 0,  0,   50, 100,  2, 0,   1,   1,   4,   0,   0,  0,  18,  2, 0 } // Third Floor
-// };
-
 int enemyData[][enemyDataCols] = {{},{},{},{},{},{},{}};
-
-// int vWallData[vWallMax][vWallDataCols] = { // x, y, height, active
-//     {25, 46, 2, 1}, {97, 46, 2, 1},
-//     {41, 34, 2, 1}, {105, 34, 2, 1},
-//     {117, 22, 2, 1}
-// };
 
 int vWallData[vWallMax][vWallDataCols] = {{},{},{},{},{}};
 
@@ -86,15 +62,12 @@ void printEscapeSign();
 void printGameName(int x, int &y);
 void printMaze_V1(int hWallData[][hWallDataCols], int hWallCount);   
 void drawHWall(int x, int y, int length);
-void drawVDoor(int x, int y, int height);
-void drawBlock(int x, int y, int width, int height);
 
 void drawAllVWalls(int vWallData[][vWallDataCols], int vWallMax);
 void drawVWall(int x, int y, int height);
 
 void printLadder(int lX, int lY);
 void printAllLadders(int ladderData[][ladderDataCols], int ladderCount);
-
 
 
 
@@ -242,7 +215,7 @@ int main() {
 
 
 
-// Logging
+// Core game Elements
 
 void printLadder(int lX, int lY){
     char ladder[ladderHight][ladderWidth] = {
@@ -410,23 +383,6 @@ void drawHWall(int x, int y, int length) {
     generateColors(15);
 }
 
-void drawVDoor(int x, int y, int height) {
-    for(int i = 0; i < height; i++) {
-        gotoxy(x, y + i);
-        cout << "+";
-    }
-}
-
-void drawBlock(int x, int y, int width, int height) {
-    for(int row = 0; row < height; row++) {
-        gotoxy(x, y + row);
-        for(int col = 0; col < width; col++) {
-            cout << "[]";
-        }
-    }
-}
-
-
 
 void drawAllVWalls(int vWallData[][vWallDataCols], int vWallMax){
     for(int i = 0; i < vWallMax; i++){
@@ -442,6 +398,9 @@ void drawVWall(int x, int y, int height) {
         cout << "#";
     }
 }
+
+
+// Menus and related functionality
 
 void gameStory(){
     system("cls");
@@ -1014,11 +973,9 @@ int pauseMenu(){
     return 0;
 }
 
-
 void printMyName(){
     int x = 87, y = 47;
 
     gotoxy(x, y);
     cout << GRAY << "@Shahram-ali-butt";
 }
-

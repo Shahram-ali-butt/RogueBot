@@ -8,8 +8,12 @@
 
 using namespace std;
 
-int enemyToWallMap[7] = {1, -1, 2, 3, 4, -1, -1};
+//            0  1    2       3          4         5        6        7         8         
+// enemyData (x, y, killed, moving, direction, startingX, health, damage , activated, 
+//     9              10                  11          12            13           14            15       16         17
+// fireRate, fireDirection(1L, -1R)), burstLimit, burstCount, fireCooldown, burstCooldown, burstDelay, floor, movementLimit)
 
+int enemyToWallMap[7] = {1, -1, 2, 3, 4, -1, -1};
 
 const int eWidth = 8, eHeight = 5;
 
@@ -22,7 +26,6 @@ void drawEnemyHealth(int enemyData[][enemyDataCols]){
 
     drawHealthBar(eHBarX, eHBarY, health, maxHealth, "ENEMY ");
 }
-
 
 
 void controlEnemies(int enemyData[][enemyDataCols], int enemyLimit){
@@ -61,7 +64,6 @@ void eraseEnemyAt(int x, int y){
 }
  
 
-
 void printAllEnemies(int enemyData[][enemyDataCols], int enemyLimit){
     generateColors(enemyColor);
     for(int i = 0; i < enemyLimit; i++){
@@ -77,7 +79,6 @@ void eraseAllEnemies(int enemyData[][enemyDataCols], int enemyLimit){
         }
     }
 }
-
 
 
 void handleBulletEnemyCollision(int playerBulletData[][playerBulletDataCols], int &playerBulletCount, int enemyData[][enemyDataCols], int vWallData[][vWallDataCols], int enemyLimit){
@@ -142,11 +143,6 @@ void eraseVWall(int x, int y, int height) {
     }
 }
 
-
-//            0  1    2       3          4         5        6        7         8         
-// enemyData (x, y, killed, moving, direction, startingX, health, damage , activated, 
-//     9              10                  11          12            13           14            15       16         17
-// fireRate, fireDirection(1L, -1R)), burstLimit, burstCount, fireCooldown, burstCooldown, burstDelay, floor, movementLimit
 
 void enemyFire(int enemyData[][enemyDataCols], int enemyLimit, int enemyBulletData[][bulletDataCols], int &enemyBulletCount){
     for (int i = 0; i < enemyLimit; i++) {
@@ -248,7 +244,6 @@ void printAllEnemyBullets(int enemyBulletData[][bulletDataCols], int &enemyBulle
 }
 
 
-
 void activateEnemies(int enemyData[][enemyDataCols], int enemyLimit){
     for (int i = 0; i < enemyLimit; i++) {
 
@@ -269,7 +264,6 @@ void activateEnemy(int enemy[]){
     enemy[13] = enemy[9];
     enemy[14] = enemy[15];
 }
-
 
 
 void printEnemy(int &ex, int &ey) {
@@ -313,22 +307,6 @@ bool enemyHitsVWall(int nextX, int ey, int direction) {
     return false;
 }
 
-void moveEnemyH(int &ex, int &ey, int &direction, int startingX) {
-    int nextX = ex + direction;
-
-    if (enemyHitsVWall(nextX, ey, direction)) {
-        direction *= -1;
-        nextX = ex + direction;
-    }
-    if (direction == -1 && ex <= startingX) {
-        direction *= -1;
-        nextX = ex + direction;
-    }
-    ex = nextX;
-
-}
-
-
 void moveEnemyLimitedH(int &ex, int &ey, int &direction, int startingX, int limit) {
     int nextX = ex + direction;
 
@@ -349,6 +327,3 @@ void moveEnemyLimitedH(int &ex, int &ey, int &direction, int startingX, int limi
 
     ex = nextX;
 }
-
-
-

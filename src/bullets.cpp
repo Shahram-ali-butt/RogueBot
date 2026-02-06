@@ -26,55 +26,6 @@ void eraseHealthBar(int barX, int barY){
     cout << string(37, '#');
 }
 
-void createBullet(int x, int y, int bulletData[][bulletDataCols], int &bulletCount){
-    bulletData[bulletCount][0] = x;
-    bulletData[bulletCount][1] = y;
-    bulletCount++;
-}
-
-void moveBulletLeft(int bulletData[][bulletDataCols], int &bulletCount){
-    int bX, bY;
-    for (int i = 0; i < bulletCount; i++){
-
-        bX = bulletData[i][0];
-        bY = bulletData[i][1];
-
-        if (getCharAtxy(bX - 1, bY) == ' '){
-            bX--;
-            bulletData[i][0] = bX;
-
-        }
-        else{
-            bulletData[i][0] = bulletData[bulletCount - 1][0];
-            bulletData[i][1] = bulletData[bulletCount - 1][1];
-            bulletCount--;
-            i--;
-        }
-    }
-}
-
-void moveBulletRight(int bulletData[][bulletDataCols], int &bulletCount){
-    int bX, bY;
-    for (int i = 0; i < bulletCount; i++){
-
-        bX = bulletData[i][0];
-        bY = bulletData[i][1];
-
-        if (getCharAtxy(bX + 1, bY) == ' '){
-            bX++;
-            bulletData[i][0] = bX;
-
-        }
-        else{
-            bulletData[i][0] = bulletData[bulletCount - 1][0];
-            bulletData[i][1] = bulletData[bulletCount - 1][1];
-            bulletCount--;
-            i--;
-        }
-    }
-}
-
-
 void createBullet(int x, int y, int bulletData[][playerBulletDataCols], int &bulletCount){
     bulletData[bulletCount][0] = x;
     bulletData[bulletCount][1] = y;
@@ -122,7 +73,6 @@ void moveBulletRight(int bulletData[][playerBulletDataCols], int &bulletCount){
         }
     }
 }
-
 
 void printBullet(int x, int y){
     gotoxy(x, y);

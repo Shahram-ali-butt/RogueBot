@@ -90,4 +90,3 @@ void disableTextWrap(){
     mode &= ~ENABLE_WRAP_AT_EOL_OUTPUT;
     SetConsoleMode(hOut, mode);
 }
-
