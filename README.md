@@ -299,17 +299,20 @@ Download `RogueBot_Play.zip` from releases.
 
 #### Step 2: Extract
 Extract the folder `RogueBot_Play` to your desired location.
+Password: roguebot
 
 #### Step 3: Run the Game
 
-**Open Git Bash inside the extracted folder:**
+**Double click `run_game.sh`**
+
+**Or Open Git Bash inside the extracted folder:**
 ```bash
 ./run_game.sh
 ```
 
 **Or manually:**
 ```bash
-./build/main.exe
+./main.exe
 ```
 
 **Important:** The game **must** be run from Git Bash for proper console configuration and rendering.
