@@ -70,6 +70,7 @@ void printLadder(int lX, int lY);
 void printAllLadders(int ladderData[][ladderDataCols], int ladderCount);
 
 
+// Main loop
 
 int main() {
     int ranOnce = 0;
