@@ -37,7 +37,6 @@
 - [Achievements & Learning Outcomes](#achievements--learning-outcomes)
 - [Troubleshooting](#troubleshooting)
 - [Credits](#credits)
-- [Version History](#version-history)
 
 ---
 
